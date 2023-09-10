@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native";
 import Colors from "../constants/Colors";
 import { ScrollView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "../contexts/apploClient";
 
 export default function HomeScreen() {
 
@@ -28,6 +30,9 @@ export default function HomeScreen() {
     //     </View>
     //   </ScrollView>
     // </SafeAreaView>
-    <Redirect href={"/home/"} />
+    <ApolloProvider client={apolloClient} >
+ <Redirect href={"/home/"} />
+    </ApolloProvider>
+   
   );
 }
