@@ -6,6 +6,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "../contexts/apploClient";
+import SocketsContextProvider from "../contexts/socketsContext";
 
 export default function HomeScreen() {
 
@@ -31,8 +32,10 @@ export default function HomeScreen() {
     //   </ScrollView>
     // </SafeAreaView>
     <ApolloProvider client={apolloClient} >
- <Redirect href={"/home/"} />
+      <SocketsContextProvider>
+        <Redirect href={"/home/"} />
+      </SocketsContextProvider>
     </ApolloProvider>
-   
+
   );
 }
