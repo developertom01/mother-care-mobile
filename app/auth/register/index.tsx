@@ -24,6 +24,28 @@ const Register = () => {
             </View>
             <View style={[styles.frameParent, styles.parentPosition]}>
                 <View>
+                <View>
+                        <Text style={[styles.eMail, styles.eMailTypo]}>First Name</Text>
+                        <View style={[styles.frameWrapperBorder, styles.inputWrapper]}>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Enter your First name"
+                                value={email}
+                                onChangeText={setEmail}
+                            />
+                        </View>
+                    </View>
+                    <View>
+                        <Text style={[styles.eMail, styles.eMailTypo]}>Last name</Text>
+                        <View style={[styles.frameWrapperBorder, styles.inputWrapper]}>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Enter your email"
+                                value={email}
+                                onChangeText={setEmail}
+                            />
+                        </View>
+                    </View>
                     <View>
                         <Text style={[styles.eMail, styles.eMailTypo]}>E-mail</Text>
                         <View style={[styles.frameWrapperBorder, styles.inputWrapper]}>
@@ -152,13 +174,14 @@ const styles = StyleSheet.create({
         fontFamily: FontFamily.poppinsRegular,
     },
     logInParent: {
-        top: 89,
+        top: 0,
     },
     eMail: {
         color: Color.colorBlack,
         fontFamily: FontFamily.poppinsMedium,
         fontWeight: "500",
         fontSize: FontSize.size_base,
+        padding: 2
     },
     vuesaxlinearsmsIcon: {
         height: 18,
@@ -226,7 +249,7 @@ const styles = StyleSheet.create({
         marginTop: 35,
     },
     frameParent: {
-        top: 220,
+        top: 95,
     },
     logosfacebookIcon: {
         marginLeft: 44,
@@ -237,7 +260,7 @@ const styles = StyleSheet.create({
     },
     logInWithParent: {
         marginLeft: -103,
-        top: 540,
+        top: 600,
         alignItems: "center",
     },
     signUp: {
@@ -245,7 +268,7 @@ const styles = StyleSheet.create({
     },
     dontHaveAnContainer: {
         marginLeft: -115,
-        top: 795,
+        top: 759,
         fontSize: FontSize.size_sm,
         textAlign: "left",
     },
@@ -261,7 +284,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         flex: 1,
         width: "100%",
-        height: 844,
+        height: "100%",
         overflow: "hidden",
     },
     inputWrapper: {
