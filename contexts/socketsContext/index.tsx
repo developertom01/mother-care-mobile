@@ -1,10 +1,11 @@
-import React, { Children } from 'react'
+import React from 'react'
 import { io } from 'socket.io-client'
+import { BACKEND_URi } from '../../config/env'
 import { Chat, Message } from '../../generated/graphql'
 import { SocketEvents } from './constants'
 import { ChatContext, ISConnectedContext } from './context'
 
-const socket = io("localhost:8000", { auth: { Authorization: "Bearer soemkey-here" } })
+const socket = io(BACKEND_URi, { auth: { Authorization: "Bearer soemkey-here" } })
 
 export type SocketsContextProviderProps = React.HTMLAttributes<HTMLElement> & {}
 
@@ -25,7 +26,7 @@ const SocketsContextProvider: React.FC<SocketsContextProviderProps> = ({ childre
   }
 
   const handleNewMessage = (message: Message) => {
-    const chat = chats.find(item => item.id = message.chatId)
+    const chat = chats.find(item => item.id = message.chatId!)
     if (chat) {
       const newChat: Chat = { ...chat }
       newChat?.messages.unshift(message)

@@ -45,6 +45,10 @@ const AppIcon = (props: IconProps) => {
           style={props.style}
         />
       );
+      default:
+        return (
+          <View></View>
+        )
   }
 };
 

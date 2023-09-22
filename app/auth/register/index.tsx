@@ -1,24 +1,25 @@
 import * as React from "react";
 import { Text, StyleSheet, View, Image, TextInput, TouchableOpacity } from "react-native";
-import { FontSize, Color, Border, FontFamily, Padding } from "./style";
+import { FontSize, Color, Border, FontFamily, Padding } from "./styles";
 import icons from "../../../constants/Icons";
-import { Link, router } from "expo-router";
+import images from "../../../constants/Images";
+import { Link } from "expo-router";
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     const handleLogin = () => {
-        router.replace("/home/chat")
+        // Implement your login logic here using email and password
         console.log('Login button pressed!');
     };
 
     return (
         <View style={styles.login}>
             <View style={[styles.logInParent, styles.parentPosition]}>
-                <Text style={styles.logIn}>Log in</Text>
+                <Text style={styles.logIn}>Create Account</Text>
                 <Text style={[styles.connectWithExpert, styles.eMailTypo]}>
-                    connect with expert doctors for personalized care and support
+                    Join our community of expecting moms
                 </Text>
             </View>
             <View style={[styles.frameParent, styles.parentPosition]}>
@@ -82,8 +83,8 @@ const Login = () => {
                 </View>
             </View>
             <Text style={[styles.dontHaveAnContainer, styles.logInWithParentPosition]}>
-                <Text style={styles.dontHaveAnClr}>{`Don’t have an account? `}</Text>
-                <Link href={"/auth/register/"} style={[styles.signUp, styles.logIn1Typo]}>Sign up</Link>
+                <Text style={styles.dontHaveAnClr}>{`Already have an account? `}</Text>
+                    <Link href={"/auth/login/"} style={[styles.signUp, styles.logIn1Typo]}>Log in</Link>
             </Text>
         </View>
     );
@@ -281,4 +282,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default Register;
