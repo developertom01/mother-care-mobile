@@ -7,17 +7,20 @@ import { useFonts } from "expo-font";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "../contexts/apploClient";
 import SocketsContextProvider from "../contexts/socketsContext";
+import AppBaseNavigator from "./components/navigators/AppBaseNavigator";
+import React from "react";
 
 export default function HomeScreen() {
-
   const [fontsLoaded] = useFonts({
-    "Poppins": require("../assets/fonts/Poppins-Regular.ttf"),
+    Poppins: require("../assets/fonts/Poppins-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
-    return <View>
-      <Text>error Loading fonts</Text>
-    </View>
+    return (
+      <View>
+        <Text>error Loading fonts</Text>
+      </View>
+    );
   }
 
   return (
@@ -31,11 +34,11 @@ export default function HomeScreen() {
     //     </View>
     //   </ScrollView>
     // </SafeAreaView>
-    <ApolloProvider client={apolloClient} >
+    <ApolloProvider client={apolloClient}>
       <SocketsContextProvider>
-        <Redirect href={"/home/"} />
+        {/* <Redirect href={"/home/"} /> */}
+        <AppBaseNavigator />
       </SocketsContextProvider>
     </ApolloProvider>
-
   );
 }

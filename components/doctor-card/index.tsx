@@ -4,6 +4,8 @@ import Colors from "../../constants/Colors";
 import AppIcon from "../app-icon";
 import Icons from "../../constants/Icons";
 import { useRouter } from "expo-router";
+import Routes, { RouteRootStackParamList } from "../../constants/routes";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 interface CardInterface {
   /**Doctor image url */
@@ -19,11 +21,12 @@ interface CardInterface {
 }
 
 const DoctorCard = (props: CardInterface) => {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<NavigationProp<RouteRootStackParamList>>();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => router.push("/doctor-details/2")}
+      onPress={() => navigation.navigate(Routes.DOCTOR_DETAIL, { id: "2" })}
     >
       <View style={styles.innerWrapper}>
         <View style={styles.imageWrapper}>
