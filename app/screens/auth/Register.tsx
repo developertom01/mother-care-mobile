@@ -9,7 +9,7 @@ import Routes from "../../../constants/routes";
 
 const Register = ({ navigation }) => {
   return (
-    <View className="flex-1 px-4 flex flex-col pt-8">
+    <View className="flex-1 px-4 flex flex-col pt-16">
       <View className="flex-1">
         <Text className="text-2xl font-bold pb-2">Create Account</Text>
         <Text className="text-gray-400 mb-5">

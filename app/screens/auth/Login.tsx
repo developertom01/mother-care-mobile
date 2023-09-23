@@ -9,9 +9,9 @@ import Routes from "../../../constants/routes";
 
 const Login = ({ navigation }) => {
   return (
-    <View className="flex-1 px-4 flex flex-col pt-8">
+    <View className="flex-1 px-4 flex flex-col pt-16">
       <View className="flex-1">
-        <Text className="text-2xl font-bold pb-2">Log in</Text>
+        <Text className="text-3xl font-bold pb-2">Log in</Text>
         <Text className="text-gray-400 mb-5">
           Join our community of {"\n"}expecting moms
         </Text>
@@ -29,7 +29,11 @@ const Login = ({ navigation }) => {
               type="password"
             />
           </View>
-          <CustomButton extraClassName="mt-5" title="Log in" />
+          <CustomButton
+            onPress={() => navigation.navigate(Routes.TAB)}
+            extraClassName="mt-5"
+            title="Log in"
+          />
         </View>
         <SSOAuth label="Sign in with" />
       </View>

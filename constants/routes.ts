@@ -4,7 +4,10 @@ enum Routes {
   HOME = "HOME",
   TAB = "TAB",
   NOTIFICATION = "NOTIFICATION",
+  //
   CHATS = "CHATS",
+  CHAT_MESSAGING = "CHAT-MESSAGING",
+
   SETTINGS = "SETTINGS",
   DOCTOR_DETAIL = "DOCTOR-DETAIL",
 }
@@ -14,7 +17,9 @@ export type RouteRootStackParamList = {
   [Routes.REGISTER]: undefined;
   [Routes.HOME]: undefined;
   [Routes.TAB]: undefined;
-  "DOCTOR-DETAIL": { id: string };
+  [Routes.DOCTOR_DETAIL]: { id: string };
+  [Routes.CHATS]: { id: string };
+  [Routes.CHAT_MESSAGING]: undefined;
 };
 
 export default Routes;
