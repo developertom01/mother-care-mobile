@@ -8,6 +8,7 @@ import SectionHeader from "../../components/SectionHeader";
 import { Avatar } from "../../../components";
 import { DoctorsData } from "../../../constants/vendor";
 import MessageTile from "../../components/MessageTile";
+import ChatData from "../../../data/chats.json";
 
 const Chat = () => {
   return (
@@ -42,8 +43,13 @@ const Chat = () => {
       />
       <Container>
         <View className="mt-2">
-          {[...DoctorsData, ...DoctorsData].map((item, index) => (
-            <MessageTile key={index} />
+          {ChatData?.map((item, index) => (
+            <MessageTile
+              name={item.name}
+              lastMessage={item.messages.at(-1).text}
+              id={item.doctorId}
+              key={index}
+            />
           ))}
         </View>
       </Container>

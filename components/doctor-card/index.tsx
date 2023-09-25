@@ -6,10 +6,13 @@ import Icons from "../../constants/Icons";
 import { useRouter } from "expo-router";
 import Routes, { RouteRootStackParamList } from "../../constants/routes";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
+import { Images } from "../../constants";
+import { doctorsImage } from "../../constants/vendor";
 
 interface CardInterface {
+  id: number;
   /**Doctor image url */
-  imageUrl: React.ComponentProps<typeof Image>["source"];
+  // imageUrl: React.ComponentProps<typeof Image>["source"];
   /**Name of the doctor */
   name: string;
   /**The speciality of the doctor */
@@ -19,18 +22,22 @@ interface CardInterface {
   /**Doctor's location */
   location: string;
 }
-
 const DoctorCard = (props: CardInterface) => {
   // const router = useRouter();
   const navigation = useNavigation<NavigationProp<RouteRootStackParamList>>();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate(Routes.DOCTOR_DETAIL, { id: "2" })}
+      onPress={() =>
+        navigation.navigate(Routes.DOCTOR_DETAIL, { id: props.id as never })
+      }
     >
       <View style={styles.innerWrapper}>
         <View style={styles.imageWrapper}>
-          <Image source={props.imageUrl} style={styles.image} />
+          <Image
+            source={doctorsImage[props?.id - 1 || 0]}
+            style={styles.image}
+          />
         </View>
         <View>
           <Text style={styles.name} numberOfLines={1}>

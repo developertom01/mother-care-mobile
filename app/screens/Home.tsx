@@ -4,9 +4,10 @@ import FormInput from "../components/forms/FormInput";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import { Icons } from "../../constants";
 import { DoctorCard } from "../../components";
-import { DoctorsData } from "../../constants/vendor";
+// import { DoctorsData } from "../../constants/vendor";
 import SectionHeader from "../components/SectionHeader";
 import Layout from "../components/layout";
+import DoctorsData from "../../data/doctor.json";
 const Home = () => {
   return (
     <Layout>
@@ -39,9 +40,10 @@ const Home = () => {
             data={DoctorsData}
             renderItem={({ item }) => (
               <DoctorCard
+                id={item.id}
                 name={item.name}
-                imageUrl={item.image}
-                speciality={item.title}
+                // imageUrl={item.image}
+                speciality={item.speciality}
                 rating={item.rating}
                 location={item.location}
               />
@@ -59,9 +61,10 @@ const Home = () => {
             data={DoctorsData}
             renderItem={({ item }) => (
               <DoctorCard
+                id={item.id}
                 name={item.name}
-                imageUrl={item.image}
-                speciality={item.title}
+                // imageUrl={item.image}
+                speciality={item.speciality}
                 rating={item.rating}
                 location={item.location}
               />

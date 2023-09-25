@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Dr Thomas Sarpong",
+    "speciality": "Cardiologist",
+    "rating": 4.5,
+    "location": "London"
+  },
+  {
+    "id": 2,
+    "name": "Dr Mabel Ankra",
+    "speciality": "Orthopedic",
+    "rating": 4.5,
+    "location": "London"
+  },
+  {
+    "id": 3,
+    "name": "Dr Astro Max",
+    "speciality": "Dermatologist",
+    "rating": 2.5,
+    "location": "New York"
+  },
+  {
+    "id": 4,
+    "name": "Dr Jessic Bompeh",
+    "speciality": "Dermatologist",
+    "rating": 3.5,
+    "location": "Accra"
+  },
+  {
+    "id": 5,
+    "name": "Dr Riley Boondocks",
+    "speciality": "Pediatrician",
+    "rating": 3.5,
+    "location": "London"
+  },
+  {
+    "id": 6,
+    "name": "Dr Regan Brown",
+    "speciality": "Pediatrician",
+    "rating": 4.5,
+    "location": "London"
+  }
+]

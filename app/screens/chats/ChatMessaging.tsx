@@ -5,43 +5,70 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Layout from "../../components/layout";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import IonIcons from "react-native-vector-icons/Ionicons";
-// import { Avatar } from '../../../components'
 import { Images } from "../../../constants";
 import Avatar from "../../components/Avatar";
 import Container from "../../components/Container";
+import ChatMessages from "../../../data/chats.json";
+import { doctorsImage } from "../../../constants/vendor";
 interface ChatCardProps {
   type?: "receiver" | "sender";
+  message?: string;
+  image?: any;
 }
-const ChatCard: React.FC<ChatCardProps> = ({ type = "sender" }) => {
+const ChatCard: React.FC<ChatCardProps> = ({
+  type = "sender",
+  message = "",
+  image,
+}) => {
   return (
     <View
       className={`flex  items-start space-x-4 py-4 ${
         type === "sender" ? "flex-row-reverse" : "flex-row"
       }`}
     >
-      <Avatar />
+      {type === "sender" ? (
+        <View className="w-[40px] h-[40px] rounded-full flex justify-center items-center bg-gray-800">
+          <Text className="text-white">ME</Text>
+        </View>
+      ) : (
+        <Avatar image={image} />
+      )}
       <View
         className="flex-1 bg-gray-200 min-h-[50px] p-4 px-8"
         style={{ borderBottomLeftRadius: 50, borderTopRightRadius: 80 }}
       >
         <Text style={{ lineHeight: 22 }} className="font-semibold">
-          Lorem ipsum dolor sit, amet consectetur? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Voluptas error numquam molestias est,
-          nisi eaque repellendus totam eum temporibus quo suscipit ab quis
-          nostrum magni dolorum quae ipsa alias dignissimos.
+          {message}
         </Text>
       </View>
     </View>
   );
 };
 
-const ChatMessaging = ({ navigation }) => {
+const ChatMessaging = ({ navigation, route }) => {
   const scrollViewRef = useRef(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const getChat = useMemo(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return ChatMessages.find((chat) => chat.id == route?.params.id);
+  }, []);
+
+  if (loading)
+    return (
+      <View className="flex-1 flex justify-center items-center">
+        <ActivityIndicator />
+        <Text>Loading</Text>
+      </View>
+    );
 
   useEffect(() => {
     // Scroll to the bottom when the component mounts
@@ -58,7 +85,12 @@ const ChatMessaging = ({ navigation }) => {
         >
           <FontAwesome name="chevron-left" size={25} />
         </Pressable>
-        <Avatar text="Godfred Dari" size="md" wrapperClassName="flex-1" />
+        <Avatar
+          image={doctorsImage[getChat.doctorId -1 || 0]}
+          text={getChat.name}
+          size="md"
+          wrapperClassName="flex-1"
+        />
         <Pressable className="relative w-[30px]">
           <Text className="text-green-700">
             <IonIcons name="ellipsis-vertical" size={25} />
@@ -67,7 +99,15 @@ const ChatMessaging = ({ navigation }) => {
       </View>
       <View className="flex-1 px-4">
         <ScrollView ref={scrollViewRef} showsVerticalScrollIndicator={false}>
-          <ChatCard />
+          {getChat?.messages.map((message, index) => (
+            <ChatCard
+              image={doctorsImage[getChat.doctorId - 1]}
+              key={index}
+              message={message.text}
+              type={message.sender ? "sender" : "receiver"}
+            />
+          ))}
+          {/* <ChatCard />
           <ChatCard type="receiver" />
           <ChatCard />
           <ChatCard type="receiver" />
@@ -78,7 +118,7 @@ const ChatMessaging = ({ navigation }) => {
           <ChatCard />
           <ChatCard />
           <ChatCard type="receiver" />
-          <ChatCard type="receiver" />
+          <ChatCard type="receiver" /> */}
         </ScrollView>
       </View>
       <View className="p-2">

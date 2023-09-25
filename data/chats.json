@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "doctorId": 1,
+    "name": "Dr Thomas Sarpong",
+    "messages": [
+      {
+        "text": "Hello Godfred, this is Dr Thomas Sarpong. Your appointment is confirmed for 2nd October 2023 at 12:03pm.",
+        "sender": true
+      },
+      {
+        "text": "Please remember to bring your insurance card and any relevant medical records.",
+        "sender": true
+      },
+      { "text": "Thank you, Dr Thomas Sarpong. I'll be there", "sender": false }
+    ]
+  },
+  {
+    "id": 2,
+    "doctorId": 2,
+    "name": "Dr Mabel Ankra",
+    "messages": [
+      { "text": "Hello I'm Godfred Book", "sender": true },
+      { "text": "Hi Godfred, How may i be of service to you ", "sender": true },
+      {
+        "text": "I would like to discuss my current health condition with you",
+        "sender": false
+      }
+    ]
+  }
+]

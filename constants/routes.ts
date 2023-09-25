@@ -19,7 +19,7 @@ export type RouteRootStackParamList = {
   [Routes.TAB]: undefined;
   [Routes.DOCTOR_DETAIL]: { id: string };
   [Routes.CHATS]: { id: string };
-  [Routes.CHAT_MESSAGING]: undefined;
+  [Routes.CHAT_MESSAGING]: { id: string };
 };
 
 export default Routes;
